@@ -1,0 +1,111 @@
+# Food Ordering Management System
+
+A console-based food ordering application written in **C**. It uses **linked lists** for the menu and the cart, and a **linked-list queue (FIFO)** for managing placed orders.
+
+## Features
+
+- Display the food menu
+- Search a food item by ID
+- Add food to the cart (quantity is updated if the item already exists)
+- View the cart with the total bill
+- Remove an item from the cart
+- Sort the menu by price (ascending)
+- Place an order (cart is cleared afterwards)
+- View all pending orders
+- Process orders in first-come, first-served order
+
+## Data Structures Used
+
+| Structure | Implementation | Purpose |
+|-----------|----------------|---------|
+| Menu | Singly linked list (`struct Food`) | Stores food ID, name and price |
+| Cart | Singly linked list (`struct Cart`) | Stores selected items with quantity |
+| Order Queue | Linked-list queue (`struct Order`, `front` / `rear`) | Holds placed orders, processed FIFO |
+
+## Algorithms / Concepts
+
+- Linked list insertion (at end), deletion, and traversal
+- Linear search on the menu
+- Sorting (selection-style swap sort) on a linked list by price
+- Queue operations: enqueue (`placeOrder`) and dequeue (`processOrder`)
+- Dynamic memory allocation with `malloc` / `free`
+
+## Default Menu
+
+| ID | Food | Price (Rs.) |
+|----|------------|-------|
+| 1 | Burger | 120 |
+| 2 | Pizza | 250 |
+| 3 | Biryani | 180 |
+| 4 | Momos | 100 |
+| 5 | Sandwich | 90 |
+| 6 | Cold Drink | 50 |
+
+## How to Compile and Run
+
+Requires a C compiler such as GCC.
+
+```bash
+gcc main.c -o food_ordering
+./food_ordering
+```
+
+On Windows:
+
+```bash
+gcc main.c -o food_ordering.exe
+food_ordering.exe
+```
+
+> Replace `main.c` with your actual file name.
+
+## Menu Options
+
+```
+1. Display Food Menu
+2. Search Food
+3. Add Food to Cart
+4. View Cart
+5. Remove Food from Cart
+6. Sort Menu by Price
+7. Place Order
+8. View Pending Orders
+9. Process Order
+0. Exit
+```
+
+## Sample Usage
+
+1. Choose **1** to see the menu.
+2. Choose **3**, enter a Food ID and a quantity to add it to the cart.
+3. Choose **4** to review the cart and total bill.
+4. Choose **7** to place the order. You get an Order ID (starting from 1001).
+5. Choose **8** to see pending orders, and **9** to process the oldest one.
+
+## Project Structure
+
+```
+.
+├── main.c      # Complete source code
+└── README.md
+```
+
+## Known Limitations
+
+- Input is not fully validated (for example, entering a letter instead of a number at the menu prompt).
+- Sorting swaps the data of nodes (including IDs), so after sorting, IDs move along with their items.
+- Memory for the menu, and for any orders still pending at exit, is not freed before the program ends.
+- Orders and data are not saved to a file; everything is lost when the program closes.
+
+## Possible Improvements
+
+- Save and load the menu and orders from a file
+- Add or delete menu items at runtime
+- Add input validation
+- Add customer names and order history
+
+## Author
+
+Amrit Varshney, Ali Abbas Zaidi, Harsh Kumar Gupta
+BCA, 3rd Semester
+Section E
